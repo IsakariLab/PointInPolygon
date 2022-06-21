@@ -37,6 +37,7 @@ ne nd1 nd2 ichdom1 ichdom2
 を表す。ただし、領域番号は無限遠を含むものが1となるように指定する必要がある。i番境界要素上の法線はichdom1からichdom2を向く。例として、以下を参照されたい: 
 
 ``example/polygon1/polygon1.dat``
+
 ``example/polygon2/polygon2.dat``
 
 ### 点群ファイルのフォーマット
