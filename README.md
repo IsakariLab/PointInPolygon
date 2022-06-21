@@ -69,4 +69,4 @@ gnuplotで
 ~~~
 p "fort.101","fort.102","fort.103","fort.104","fort.105","fort.106","fort.107","fort.108"
 ~~~
-などとすると(領域ごとの点群)[./outputs/example1.png]のように結果を可視化してくれる。
+などとすると![領域ごとの点群](./outputs/example1.png)を可視化してくれる。
