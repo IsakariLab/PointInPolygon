@@ -22,7 +22,7 @@ program gen_points
   end do
 
   open(1,file="points.dat")
-  write(1,*) n
+  write(1,*) n, nx, ny
   do i=1,n
      write(1,*) i, x(:,i)
   end do
