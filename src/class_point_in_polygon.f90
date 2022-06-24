@@ -5,7 +5,7 @@ module class_point_in_polygon
   type :: point
 
      !> 点の数
-     integer :: n
+     integer :: n(0:2)
 
      !> 点の座標
      real(8),allocatable :: x(:,:)
@@ -128,14 +128,14 @@ contains
 
     ! 点を読み込み
     open(10,file=file_po,status="old")
-    read(10,*) self%po%n
-    if(.not.allocated(self%po%x)) allocate(self%po%x(2,self%po%n))
-    do i=1,self%po%n
+    read(10,*) self%po%n(0), self%po%n(1), self%po%n(2)
+    if(.not.allocated(self%po%x)) allocate(self%po%x(2,self%po%n(0)))
+    do i=1,self%po%n(0)
        read(10,*) itmp, self%po%x(:,i)
     end do
     close(10)
 
-    allocate(self%po%dom(self%po%n))
+    allocate(self%po%dom(self%po%n(0)))
 
   end subroutine init
 
@@ -202,7 +202,7 @@ contains
     self%po%dom(:)=1
 
     !$omp parallel do private(ix,idom,th,iy,sgn,y,x) collapse(2)
-    do ix=1,self%po%n
+    do ix=1,self%po%n(0)
        do idom=1,self%po%ndom
           th=0.d0
           do iy=1,self%poly%n
@@ -230,7 +230,7 @@ contains
     !$omp end parallel do
 
     do idom=1,self%po%ndom
-       do ix=1,self%po%n
+       do ix=1,self%po%n(0)
           if(self%po%dom(ix).eq.idom) then
              write(100+idom,*) self%po%x(:,ix)
           end if
@@ -238,8 +238,8 @@ contains
     end do
 
     open(10,file=output_file)
-    write(10,*) self%po%n
-    do i=1,self%po%n
+    write(10,*) self%po%n(0), self%po%n(1), self%po%n(2)
+    do i=1,self%po%n(0)
        write(10,*) i, self%po%x(:,i), self%po%dom(i)
     end do
     close(10)

@@ -4,7 +4,7 @@ program main
 
   type(pointinpolygon) :: pip
 
-  character(len=256) :: file_poly = "./examples/circle/circle.el2"
+  character(len=256) :: file_poly = "./examples/resonator_demo/resonator_demo.el2"
   character(len=256) :: file_po = "./examples/points/points.dat"
 
   
