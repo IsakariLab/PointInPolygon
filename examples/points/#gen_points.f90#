@@ -10,8 +10,8 @@ program gen_points
   integer :: iy, ix, i
   real(8) :: xx, yy
   
-  i=0
-  do iy=0,ny
+  i=0 
+omake do iy=0,ny
      yy=ylim(1)+(ylim(2)-ylim(1))*dble(iy)/dble(ny)
      do ix=0,nx
         xx=xlim(1)+(xlim(2)-xlim(1))*dble(ix)/dble(nx)

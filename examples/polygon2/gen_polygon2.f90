@@ -55,6 +55,7 @@ program gen_polygon2
      xx=xlim(2)-dble(i)/dble(n)*lngth
      yy=ylim(2)
      write(1,*) i+icrv(1,1)-1, xx, yy
+     write(101,*) xx, yy
      ic=ic+1
   end do
   icrv(2,1)=ic
@@ -67,6 +68,7 @@ program gen_polygon2
      xx=xlim(1)
      yy=ylim(2)-dble(i)/dble(n)*lngth
      write(1,*) i+icrv(1,2)-1, xx, yy
+     write(102,*) xx, yy
      ic=ic+1
   end do
   icrv(2,2)=ic
@@ -79,6 +81,7 @@ program gen_polygon2
      xx=xlim(1)+dble(i)/dble(n)*lngth
      yy=ylim(1)
      write(1,*) i+icrv(1,3)-1, xx, yy
+     write(103,*) xx, yy
      ic=ic+1
   end do
   icrv(2,3)=ic
@@ -91,6 +94,7 @@ program gen_polygon2
      xx=xlim(2)
      yy=ylim(1)+dble(i)/dble(n)*lngth
      write(1,*) i+icrv(1,4)-1, xx, yy
+     write(104,*) xx, yy
      ic=ic+1
   end do
   icrv(2,4)=ic
@@ -104,6 +108,7 @@ program gen_polygon2
      yy=ylim2(2)
      write(1,*) i+icrv(1,5)-1, xx, yy
      ic=ic+1
+     write(105,*) xx, yy
   end do
   icrv(2,5)=ic
 
@@ -116,6 +121,7 @@ program gen_polygon2
      yy=ylim2(2)-dble(i)/dble(n)*lngth
      write(1,*) i+icrv(1,6)-1, xx, yy
      ic=ic+1
+     write(106,*) xx, yy
   end do
   icrv(2,6)=ic
 
@@ -128,6 +134,7 @@ program gen_polygon2
      yy=ylim2(1)
      write(1,*) i+icrv(1,7)-1, xx, yy
      ic=ic+1
+     write(107,*) xx, yy
   end do
   icrv(2,7)=ic
 
@@ -139,6 +146,7 @@ program gen_polygon2
      xx=xlim2(1)
      yy=ylim2(1)+dble(i)/dble(n)*lngth
      write(1,*) i+icrv(1,8)-1, xx, yy
+     write(108,*) xx, yy
      ic=ic+1
   end do
   icrv(2,8)=ic
@@ -151,6 +159,7 @@ program gen_polygon2
      xx=xlim2(1)+dble(i)/dble(n)*lngth
      yy=ylim2(2)
      write(1,*) i+icrv(1,9)-1, xx, yy
+     write(109,*) xx, yy
      ic=ic+1
   end do
   icrv(2,9)=ic
@@ -161,14 +170,15 @@ program gen_polygon2
   ic=0
   ! 線分1
   do i=1,icrv(2,1)-1
-     write(1,*) i, i, i+1, 3, 1
+     write(1,*) i, i+1, i, 1, 3
   end do
-  write(1,*) icrv(2,1), i, i+1, 3, 2
+  write(1,*) icrv(2,1), i+1, i, 2, 3
   ! 線分2->4
   do i=icrv(1,2),icrv(2,4)-1
-     write(1,*) i, i, i+1, 3, 2
+     write(1,*) i, i+1, i, 2, 3
   end do
-  write(1,*) icrv(2,4), icrv(2,4), icrv(1,1), 3, 2
+  !write(1,*) icrv(2,4), icrv(1,1), icrv(2,4), 2, 3 !bug 
+  write(1,*) icrv(2,4), icrv(1,1), icrv(2,4), 1, 3 !fixed 2023.09.13
   
   ! 線分5->9
   do i=icrv(1,5),icrv(2,9)-1
